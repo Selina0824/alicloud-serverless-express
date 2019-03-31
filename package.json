@@ -1,0 +1,24 @@
+{
+  "name": "alicloud-serverless-express",
+  "version": "0.1.0",
+  "description": "Run serverless applications and REST APIs using your existing Node.js application framework, on top of AliCloud Function Compute and API Gateway",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [
+    "Aliyun",
+    "function compute",
+    "express",
+    "serverless"
+  ],
+  "author": {
+    "name": "Liu Qian"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "binary-case": "^1.1.4",
+    "js-base64": "^2.5.1",
+    "type-is": "^1.6.16"
+  }
+}

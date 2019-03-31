@@ -1,0 +1,60 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  fc-demo:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: 'fc service '
+      LogConfig:
+        Project: starter-logproject-gadev
+        Logstore: starter-fm-log-store-gadev
+    feedback: 
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: lambda.handler
+        Runtime: nodejs8
+        CodeUri: './'
+        Timeout: 60
+  apigateway_demo:
+    Type: 'Aliyun::Serverless::Api'
+    Properties:
+      StageName: RELEASE
+      DefinitionBody:
+        '/':
+          get: 
+            x-aliyun-apigateway-api-name: demo 
+            x-aliyun-apigateway-description: api gateway of demo
+            x-aliyun-apigateway-request-config:
+              requestMode: "PASSTHROUGH"
+              requestProtocol: "http,https"
+            x-aliyun-apigateway-visibility: PUBLIC
+            x-aliyun-apigateway-fc:
+              arn: acs:fc:::services/${fc-demo.Arn}/functions/${feedback.Arn}/
+              timeout: 3000
+        '/public/img/[imgPath]':
+          get: 
+            x-aliyun-apigateway-api-name: getImg 
+            x-aliyun-apigateway-description: api gateway of demo
+            x-aliyun-apigateway-request-config:
+              requestMode: "PASSTHROUGH"
+              requestProtocol: "http,https"
+            x-aliyun-apigateway-request-parameters:
+              - apiParameterName: 'imgPath'
+                location: 'Path'
+                type: 'String'
+                parameterType: 'REQUIRED'
+            x-aliyun-apigateway-visibility: PUBLIC
+            x-aliyun-apigateway-fc:
+              arn: acs:fc:::services/${fc-demo.Arn}/functions/${feedback.Arn}/
+              timeout: 30000
+        '/post':
+          any: 
+            x-aliyun-apigateway-api-name: demoPost 
+            x-aliyun-apigateway-description: api gateway of demo
+            x-aliyun-apigateway-request-config:
+              requestMode: "PASSTHROUGH"
+              requestProtocol: "http,https"
+            x-aliyun-apigateway-visibility: PUBLIC
+            x-aliyun-apigateway-fc:
+              arn: acs:fc:::services/${fc-demo.Arn}/functions/${feedback.Arn}/
+              timeout: 30000

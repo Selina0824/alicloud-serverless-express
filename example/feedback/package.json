@@ -1,0 +1,25 @@
+{
+  "name": "feedback_by_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "local": "node app.local.js",
+    "lambda-local": "node scripts/local.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "base-64": "^0.1.0",
+    "binary-case": "^1.1.4",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-art-template": "^1.0.1",
+    "js-base64": "^2.5.1",
+    "request": "^2.88.0",
+    "type-js": "^1.0.0"
+  }
+}
