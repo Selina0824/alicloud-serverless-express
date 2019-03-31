@@ -25,4 +25,4 @@ exports.handler = (event, context, callback) =>{
 
 ## Quick Start/Example
 
-Want to get up and running quickly? [Check out our basic starter example](examples/feedback) which includes:
+Want to get up and running quickly? [Check out example](example/feedback) which includes:
