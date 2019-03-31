@@ -1,4 +1,4 @@
-const lambdaFunction = require('../lambda.js')
+const lambdaFunction = require('../index.js')
 const apiGatewayEvent = require('../api-gateway-event.json')
 process.env.NODE_ENV = 'test'
 

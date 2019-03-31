@@ -25,8 +25,10 @@ let server = alicloudServerlessExpress.createServer(app,binaryMimeTypes);
 
 
 exports.handler = (event, context, callback) =>{
-    if(!process.env.NODE_ENV === 'test') {
+    try{
         event = JSON.parse(event.toString());
+    }catch(err){
+        console.log('local event')
     }
     alicloudServerlessExpress.proxy(server, event, callback);
 }
