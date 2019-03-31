@@ -9,9 +9,9 @@ npm install alicloud-serverless-express
 
 ```js
 // index.js
-let app = require('./app');
-let alicloudServerlessExpress = require('alicloud-serverless-express');
-let server = alicloudServerlessExpress.createServer(app);
+const alicloudServerlessExpress = require('alicloud-serverless-express');
+const app = require('./app');
+const server = alicloudServerlessExpress.createServer(app);
 
 exports.handler = (event, context, callback) =>{
     try{
