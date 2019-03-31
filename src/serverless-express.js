@@ -57,7 +57,7 @@ function responseToApiGateway(server, response, callback) {
                     }
                 })
 
-            const contentType = headers['Content-Type'] ? headers['Content-Type'].split(';')[0] : ''; // only compare mime type; ignore encoding part
+            const contentType = headers['content-type'] ? headers['content-type'].split(';')[0] : ''; // only compare mime type; ignore encoding part
             const isBase64Encoded = isContentTypeBinaryMimeType({
                 contentType,
                 binaryMimeTypes: server._binaryTypes
